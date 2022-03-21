@@ -70,5 +70,28 @@ public class APIUtility {
      * This method will call the API and return the Java objects without creating a
      * JSON file on the hard drive.
      */
+    public static ApiResponse getMoviesFromOMDBQuick(String searchTerm){
+
+        searchTerm = searchTerm.replace(" ", "%20");
+
+        String uri = "http://www.omdbapi.com/?apikey=4a1010ab&s="+searchTerm;
+
+        HttpClient client = HttpClient.newHttpClient();
+        HttpRequest httpRequest = HttpRequest.newBuilder().uri(URI.create(uri)).build();
+
+        try {
+            //this will call the API and write the result to the file "javaApiFeteched.json"
+            HttpResponse<String> response = client.send(httpRequest, HttpResponse
+                                                    .BodyHandlers.ofString());
+            Gson gson = new Gson();
+            return gson.fromJson(response.body(), ApiResponse.class);
+
+        } catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
 
 }
