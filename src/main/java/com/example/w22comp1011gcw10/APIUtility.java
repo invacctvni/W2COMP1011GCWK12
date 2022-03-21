@@ -73,7 +73,6 @@ public class APIUtility {
     public static ApiResponse getMoviesFromOMDBQuick(String searchTerm){
 
         searchTerm = searchTerm.replace(" ", "%20");
-
         String uri = "http://www.omdbapi.com/?apikey=4a1010ab&s="+searchTerm;
 
         HttpClient client = HttpClient.newHttpClient();
