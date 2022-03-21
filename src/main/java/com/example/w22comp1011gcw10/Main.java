@@ -20,7 +20,7 @@ public class Main  {
     public static void main(String[] args) {
 //        launch();
 
-        ApiResponse apiResponse = APIUtility.getMoviesFromJSONFile("apiResponse.json");
+        ApiResponse apiResponse = APIUtility.getMoviesFromOMDB("Iron Man");
         System.out.println(apiResponse);
     }
 }

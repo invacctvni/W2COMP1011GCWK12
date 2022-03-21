@@ -66,4 +66,9 @@ public class APIUtility {
         return getMoviesFromJSONFile("javaApiFetched.json");
     }
 
+    /**
+     * This method will call the API and return the Java objects without creating a
+     * JSON file on the hard drive.
+     */
+
 }
