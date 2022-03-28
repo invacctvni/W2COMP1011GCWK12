@@ -9,7 +9,6 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.w22comp1011gcw10.SearchViewController">
    <children>
       <HBox alignment="CENTER" layoutX="46.0" layoutY="27.0" prefHeight="400.0" prefWidth="600.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -25,7 +24,12 @@
                   <ListView fx:id="resultListView" prefHeight="299.0" prefWidth="386.0" />
                </children>
             </VBox>
-            <ImageView fx:id="imageView" fitHeight="335.0" fitWidth="258.0" pickOnBounds="true" preserveRatio="true" />
+            <VBox alignment="TOP_CENTER">
+               <children>
+                  <ImageView fx:id="imageView" fitHeight="335.0" fitWidth="258.0" pickOnBounds="true" preserveRatio="true" />
+                  <Button mnemonicParsing="false" text="Get Details" />
+               </children>
+            </VBox>
          </children>
          <padding>
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
