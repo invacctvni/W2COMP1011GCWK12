@@ -1,9 +1,13 @@
 package com.example.w22comp1011gcw10;
 
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.image.ImageView;
+
+import java.net.URL;
+import java.util.ResourceBundle;
 
 public class MovieDetailsController {
 
@@ -26,12 +30,22 @@ public class MovieDetailsController {
     private Label languageLabel;
 
     @FXML
-    private ListView<?> actorsListView;
+    private ListView<String> actorsListView;
 
     @FXML
-    private ListView<?> ratingsListView;
+    private ListView<Rating> ratingsListView;
 
     @FXML
     private ImageView imageView;
 
+    private MovieDetails movie;
+
+    /**
+     * This method will load a movieID
+     */
+    public void loadMovieDetails(String imdbID)
+    {
+        System.out.println("The movie ID pass into the controller is: "+imdbID);
+//        movie = APIUtility.getMovieDetails(imdbID);
+    }
 }

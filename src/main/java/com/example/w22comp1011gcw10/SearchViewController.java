@@ -9,6 +9,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -55,9 +56,9 @@ public class SearchViewController implements Initializable {
      * This method will pass the imdb information to the movie details controller
      */
     @FXML
-    private void getDetails(ActionEvent event)
-    {
+    private void getDetails(ActionEvent event) throws IOException {
         String imdbID = resultListView.getSelectionModel().getSelectedItem().getImdbID();
         System.out.println("Movie ID: "+imdbID);
+        SceneChanger.changeScenes(event, "movie-details.fxml",imdbID);
     }
 }
