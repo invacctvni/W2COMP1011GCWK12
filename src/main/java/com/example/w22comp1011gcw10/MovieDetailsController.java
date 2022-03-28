@@ -64,5 +64,9 @@ public class MovieDetailsController {
         }
 
         ratingsListView.getItems().addAll(movie.getRatings());
+
+        //We want to create an array of Actors from the single string
+        String[] actors = movie.getActors().split(", ");
+        actorsListView.getItems().addAll(actors);
     }
 }
