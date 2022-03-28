@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 import java.net.URL;
@@ -45,7 +46,23 @@ public class MovieDetailsController {
      */
     public void loadMovieDetails(String imdbID)
     {
-        System.out.println("The movie ID pass into the controller is: "+imdbID);
-//        movie = APIUtility.getMovieDetails(imdbID);
+        movie = APIUtility.getMovieDetails(imdbID);
+
+        movieTitleLabel.setText(movie.getTitle());
+        languageLabel.setText(movie.getLanguage());
+        genreLabel.setText(movie.getGenre());
+        releaseDateLabel.setText(movie.getReleaseDate());
+        runTimeLabel.setText(movie.getRuntime());
+        writersLabel.setText(movie.getWriter());
+
+        try {
+            imageView.setImage(new Image(movie.getPosterURL()));
+        }
+        catch (IllegalArgumentException e)
+        {
+            imageView.setImage(new Image("https://trailerfailure.com/img/images/missingCoverPhoto.jpg"));
+        }
+
+        ratingsListView.getItems().addAll(movie.getRatings());
     }
 }

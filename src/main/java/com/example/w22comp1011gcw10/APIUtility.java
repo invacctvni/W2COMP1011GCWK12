@@ -93,4 +93,28 @@ public class APIUtility {
         return null;
     }
 
+    /**
+     * This method receives an imdbID for a movie or show and returns
+     * a MovieDetails object
+     */
+    public static MovieDetails getMovieDetails(String imdbID)
+    {
+        String uri = "http://www.omdbapi.com/?apikey=4a1010ab&i="+imdbID;
+
+        HttpClient client = HttpClient.newHttpClient();
+        HttpRequest httpRequest = HttpRequest.newBuilder().uri(URI.create(uri)).build();
+
+        try {
+            //this will call the API and write the result to the file "javaApiFeteched.json"
+            HttpResponse<String> response = client.send(httpRequest, HttpResponse
+                    .BodyHandlers.ofString());
+            Gson gson = new Gson();
+            return gson.fromJson(response.body(), MovieDetails.class);
+
+        } catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }
