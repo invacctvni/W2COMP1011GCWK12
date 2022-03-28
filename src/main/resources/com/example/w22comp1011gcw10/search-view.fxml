@@ -26,8 +26,8 @@
             </VBox>
             <VBox alignment="TOP_CENTER">
                <children>
-                  <ImageView fx:id="imageView" fitHeight="335.0" fitWidth="258.0" pickOnBounds="true" preserveRatio="true" />
-                  <Button mnemonicParsing="false" text="Get Details" />
+                  <ImageView fx:id="imageView" fitHeight="319.0" fitWidth="258.0" pickOnBounds="true" preserveRatio="true" />
+                  <Button fx:id="getInfoButton" mnemonicParsing="false" onAction="#getDetails" text="Get Details" />
                </children>
             </VBox>
          </children>
