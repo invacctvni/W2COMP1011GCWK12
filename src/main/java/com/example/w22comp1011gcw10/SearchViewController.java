@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -28,16 +29,27 @@ public class SearchViewController implements Initializable {
     private Button getInfoButton;
 
     @FXML
+    private Label msgLabel;
+
+
+    @FXML
     private void searchMovies()
     {
         ApiResponse apiResponse = APIUtility.getMoviesFromOMDBQuick(searchTextField.getText());
         resultListView.getItems().clear();
-        resultListView.getItems().addAll(apiResponse.getSearch());
+        if (apiResponse.getSearch() != null)
+        {
+            resultListView.getItems().addAll(apiResponse.getSearch());
+            msgLabel.setText("");
+        }
+        else
+            msgLabel.setText("Movie not found");
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         getInfoButton.setVisible(false);
+        msgLabel.setText("");
 
         resultListView.getSelectionModel().selectedItemProperty().addListener(
                 (obs, oldMovieSelected, newMovieSelected) -> {
