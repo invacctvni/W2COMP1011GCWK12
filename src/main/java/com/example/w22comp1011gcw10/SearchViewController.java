@@ -81,6 +81,18 @@ public class SearchViewController implements Initializable {
                                 Platform.runLater(new Runnable() {
                                     @Override
                                     public void run() {
+                                        //the poster has been loaded
+                                        if (reportedProgress > .9)
+                                        {
+                                            progressBar.setVisible(false);
+                                            try {
+                                                imageView.setImage(new Image(newMovieSelected.getPoster()));
+                                            }
+                                            catch (IllegalArgumentException e)
+                                            {
+                                                imageView.setImage(new Image("https://trailerfailure.com/img/images/missingCoverPhoto.jpg"));
+                                            }
+                                        }
                                         progressBar.setProgress(reportedProgress);
                                     }
                                 });
@@ -90,13 +102,7 @@ public class SearchViewController implements Initializable {
                     fetchPosterThread.start();
 
                     getInfoButton.setVisible(true);
-                    try {
-                        imageView.setImage(new Image(newMovieSelected.getPoster()));
-                    }
-                    catch (IllegalArgumentException e)
-                    {
-                        imageView.setImage(new Image("https://trailerfailure.com/img/images/missingCoverPhoto.jpg"));
-                    }
+
                 });
     }
 

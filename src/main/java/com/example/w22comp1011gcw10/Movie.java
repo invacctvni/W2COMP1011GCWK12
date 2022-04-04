@@ -41,4 +41,9 @@ public class Movie {
     {
         return String.format("%s (%s)",title, year);
     }
+
+    public int getYearAsInt()
+    {
+        return Integer.parseInt(year);
+    }
 }
