@@ -9,6 +9,7 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 
 public class APIUtility {
 
@@ -40,6 +41,30 @@ public class APIUtility {
 
         return response;
     }
+
+    public static Movie[] getMoviesFromJSONFileArray(String fileName)
+    {
+        //create a GSON object to parse the objects
+        Gson gson = new Gson();
+        Movie[] movies = null;
+
+        //try with resources - anything inside the () will "auto close"
+        try(
+                //open the json file from the harddrive
+                FileReader fileReader = new FileReader(fileName);
+                JsonReader jsonReader = new JsonReader(fileReader);
+        ){
+            //converting the JSON objects into an ApiResponse object
+            movies = gson.fromJson(jsonReader, Movie[].class);
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+
+        return movies;
+    }
+
 
     /**
      * This method will call the OMDB API and write to a file
