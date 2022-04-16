@@ -99,6 +99,7 @@ public class SearchViewController implements Initializable {
                             }
                         }
                     });
+                    //start the threads.
                     fetchPosterThread.start();
 
                     getInfoButton.setVisible(true);
